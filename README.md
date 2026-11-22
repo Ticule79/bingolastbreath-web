@@ -14,13 +14,20 @@ Puis http://localhost:8765 (aussi : configuration `web` dans `.claude/launch.jso
 
 `wikidata` v6 (déployée le 22/11/2026) répond au CORS : l'ajout de célébrités marche depuis le navigateur.
 
-## Mettre en ligne (à décider)
+## En ligne
 
-Il faut un hébergement HTTPS statique. Le dépôt `bingolastbreath` est privé (GitHub Pages payant sur dépôt privé). Options :
-1. Nouveau dépôt **public** `bingolastbreath-web` avec le contenu de `web/` → GitHub Pages → `https://ticule79.github.io/bingolastbreath-web/`.
-2. Netlify / Vercel / Cloudflare Pages (glisser-déposer du dossier `web/`).
+**https://ticule79.github.io/bingolastbreath-web/** — dépôt public `Ticule79/bingolastbreath-web` (branche `main`,
+GitHub Pages), qui ne contient que le dossier `web/`. Le dépôt principal reste privé.
 
-Ensuite : mettre l'URL dans les pages légales (confidentialité : hébergeur du site, stockage local du navigateur).
+Publier une mise à jour (après avoir commité `web/` ici) :
+
+```powershell
+git subtree split --prefix web -b web-pages
+git push https://github.com/Ticule79/bingolastbreath-web.git web-pages:main
+```
+Penser à changer `CACHE` dans `sw.js` (ex. `bingo-v3`) pour que les téléphones jettent l'ancienne version.
+
+Reste à faire : mettre l'URL dans les pages légales (confidentialité : hébergeur GitHub Pages, stockage local du navigateur).
 
 ## Ce qui marche (testé les 20 et 22/11/2026 sur Supabase réel, comptes de test supprimés ensuite)
 
