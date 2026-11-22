@@ -7,9 +7,9 @@ const SUPABASE_KEY = 'sb_publishable_FmmCi5ynO_Ok7ODB1Vw1Uw_Fd3TKNcU' // clé pu
 const LEGAL = 'https://ticule79.github.io/bingolastbreath-legal/'
 const EMAIL = 'novera.app.contact@gmail.com'
 const LEGAL_VERSION = 1 // comme Legal.VERSION côté Android : à incrémenter si CGU/politique changent sur le fond
-// Connexion Google par redirection : exige l'adresse de la web app dans Supabase → Authentication → URL Configuration
-// → Redirect URLs (sinon Supabase renvoie vers le Site URL). Voir web/README.md.
-const GOOGLE = false
+// Connexion Google par redirection : l'adresse de la web app est autorisée dans Supabase → Authentication →
+// URL Configuration → Redirect URLs (https://ticule79.github.io/bingolastbreath-web/**, ajoutée le 22/11/2026).
+const GOOGLE = true
 
 const sb = createClient(SUPABASE_URL, SUPABASE_KEY, {
   auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true, flowType: 'pkce', storageKey: 'bingo-auth' },

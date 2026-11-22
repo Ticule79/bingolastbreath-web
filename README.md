@@ -38,12 +38,11 @@ compte, se déconnecter), suppression du compte.
 
 Un compte protégé par e-mail se retrouve partout : app Android, iPhone, autre navigateur.
 
-## Connexion Google sur le web (désactivée)
+## Connexion Google sur le web
 
-Le bouton est prêt mais masqué (`GOOGLE = false` dans `app.js`). Pour l'activer :
-1. Supabase → Authentication → URL Configuration → **Redirect URLs** → ajouter
-   `https://ticule79.github.io/bingolastbreath-web/` (sinon Supabase renvoie vers le Site URL, le site légal).
-2. Passer `GOOGLE = true`, publier.
+Activée le 22/11/2026 (`GOOGLE = true`). Elle repose sur la Redirect URL
+`https://ticule79.github.io/bingolastbreath-web/**` (Supabase → Authentication → URL Configuration) : si l'adresse
+de la web app change, mettre à jour cette ligne, sinon Google renvoie vers le site légal.
 
 ## Pas encore porté
 
