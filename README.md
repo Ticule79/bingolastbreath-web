@@ -21,33 +21,30 @@ GitHub Pages), qui ne contient que le dossier `web/`. Le dépôt principal reste
 
 Publier une mise à jour (après avoir commité `web/` ici) :
 
-```powershell
-git subtree split --prefix web -b web-pages
-git push https://github.com/Ticule79/bingolastbreath-web.git web-pages:main
+```bash
+git push https://github.com/Ticule79/bingolastbreath-web.git $(git subtree split --prefix web):main
 ```
 Penser à changer `CACHE` dans `sw.js` (ex. `bingo-v3`) pour que les téléphones jettent l'ancienne version.
 
 Reste à faire : mettre l'URL dans les pages légales (confidentialité : hébergeur GitHub Pages, stockage local du navigateur).
 
-## Ce qui marche (testé les 20 et 22/11/2026 sur Supabase réel, comptes de test supprimés ensuite)
+## Ce qui marche (même fonctions que l'app Android 0.7.2, testé le 22/11/2026)
 
-Accord 18+ et CGU, pseudo, accueil, rejoindre par code ou lien `?join=CODE`, créer un groupe (durées, dates,
-nombre de choix, options, amis), classement dépliable, équipe (joker, retrait, pari secret, mois prédit),
-recherche et ajout de célébrités, réglages admin, bonus (avec tirage du thème), membres (admin, exclure, signaler, bloquer),
-quitter/supprimer le groupe, saison suivante, notice, menu légal, suppression du compte.
+Tout ce que fait l'app Android : accord 18+, pseudo, groupes, équipe, joker, pari secret, mois prédit, recherche
+et ajout de célébrités, **personnes non célèbres** (ajout, naissance partielle, décès, confirmation, signalement,
+suppression), réglages, bonus (tous cochés à la création), membres, saison suivante, notice et lexique complets,
+**français / anglais**, hors ligne, **comptes par e-mail** (protéger le compte, « J'ai déjà un compte », changer de
+compte, se déconnecter), suppression du compte.
 
-Sur iPhone dans Safari : écran « installe d'abord l'app » (Safari et l'app de l'écran d'accueil n'ont **pas
-le même stockage** : un compte créé dans Safari serait perdu).
+Un compte protégé par e-mail se retrouve partout : app Android, iPhone, autre navigateur.
 
-Depuis la v0.7.2 Android (testé le 22/11/2026) : hors ligne (dernières données en cache, bandeau,
-rechargement au retour du réseau, écritures refusées avec un message), tous les bonus cochés à la création,
-boutons Tout cocher / Tout décocher.
+## Connexion Google sur le web (désactivée)
+
+Le bouton est prêt mais masqué (`GOOGLE = false` dans `app.js`). Pour l'activer :
+1. Supabase → Authentication → URL Configuration → **Redirect URLs** → ajouter
+   `https://ticule79.github.io/bingolastbreath-web/` (sinon Supabase renvoie vers le Site URL, le site légal).
+2. Passer `GOOGLE = true`, publier.
 
 ## Pas encore porté
 
-- « J'ai déjà un compte », « Changer de compte », « Se déconnecter » (Android 0.7.2) : dépendent de la connexion e-mail.
-
-- Personnes non célèbres : ajout, naissance, décès, confirmation (choisir une fiche existante marche).
-- Anglais (interface en français seulement).
-- Connexion e-mail / Google (le SMTP n'est pas encore configuré de toute façon) : changer de téléphone = perdre son compte.
-- Notifications push web.
+- Notifications push (pas faites non plus sur Android).
